@@ -6,6 +6,7 @@ export interface DefaultResponse<T> {
 }
 
 export interface Paginate<T> {
+  nextPageUrl: any;
   data: T[];
   links: {
     first: string;

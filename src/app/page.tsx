@@ -1,8 +1,8 @@
-import ProductList from "./product/product-list";
+import ProductList from "./user/user-list";
 
 export default function Home() {
   return (
-    <main className="">
+    <main className="container">
       <ProductList />
     </main>
   );

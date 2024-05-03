@@ -12,4 +12,5 @@ export interface IUser {
   active: boolean;
   role: string;
   img: string;
+  full_name?: string;
 }
