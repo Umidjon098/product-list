@@ -8,25 +8,26 @@ const SearchForm = () => {
   const searchParams = useSearchParams();
   const { setQueryParams } = useQueryParams();
   const [search, setSearch] = useState(searchParams.get("search") as string);
+  const [filter, setFilter] = useState(searchParams.get("search") as string);
 
-  const debouncedSearchValue = useDebounce(search);
-
-  const handleChangeSortType = (value: string) => {
-    setQueryParams({ sort: value }, false);
-  };
+  const debouncedSearchValue = useDebounce(search) || "";
 
   useEffect(() => {
     setQueryParams({ search: debouncedSearchValue }, false);
   }, [debouncedSearchValue]);
 
+  useEffect(() => {
+    setQueryParams({ sort: filter }, false);
+  }, [filter]);
+
   return (
     <div className="mx-auto mb-6">
       <div className="flex gap-4">
         <select
-          onChange={(e) => handleChangeSortType(e.target.value)}
+          value={searchParams.get("sort") as string}
+          onChange={(e) => setFilter(e.target.value)}
           className="w-[250px] bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
         >
-          <option selected>Filter</option>
           <option value="asc">Low</option>
           <option value="desc">High</option>
         </select>
@@ -41,9 +42,9 @@ const SearchForm = () => {
             >
               <path
                 stroke="currentColor"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
                 d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"
               />
             </svg>

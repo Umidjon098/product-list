@@ -38,7 +38,7 @@ export default function ProductList() {
       )}
       {isLoading ? (
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
-          {Array.from(Array(10).keys()).map((product) => (
+          {Array.from(Array(4).keys()).map((product) => (
             <ProductCard.Loading key={product} />
           ))}
         </div>
@@ -50,7 +50,7 @@ export default function ProductList() {
         >
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4  gap-3">
             {productList?.map((product) => (
-              <ProductCard product={product} />
+              <ProductCard key={product.id} product={product} />
             ))}
           </div>
         </InfiniteLoader>
