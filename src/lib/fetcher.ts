@@ -15,8 +15,6 @@ const fetcher = async <T>(
   const res = await fetch(url, {
     ...init,
     headers: {
-      Authorization:
-        "Bearer 4035|xXSSRo5gOzFhGpYmxltgmJNUuDXRUOERx3GdP5UM" as string,
       ...init?.headers,
     },
   });

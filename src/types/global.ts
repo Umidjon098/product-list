@@ -38,6 +38,12 @@ export interface ErrorResponse {
   params?: Record<string, string[]>;
 }
 
+export interface Translation {
+  id: number;
+  locale: string;
+  title: string;
+}
+
 export type ParamsType = Record<
   string,
   | string

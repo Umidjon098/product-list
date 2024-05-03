@@ -2,44 +2,43 @@
 "use client";
 
 import { InfiniteLoader } from "@/components/infinite-loader";
-import { userService } from "@/services/user";
+import { productService } from "@/services/product";
 import { extractDataFromPagination } from "@/utils/extract-data";
 import { useInfiniteQuery } from "@tanstack/react-query";
 import { useSearchParams } from "next/navigation";
-import UserCard from "./card";
+import ProductCard from "./card";
 
 export default function ProductList() {
   const searchParams = useSearchParams();
 
   const params = {
     sort: searchParams.get("sort") || "asc",
-    role: "user",
     perPage: 10,
   };
 
   const { data, isLoading, isFetchingNextPage, fetchNextPage, hasNextPage } =
     useInfiniteQuery({
-      queryKey: ["users", params],
+      queryKey: ["products", params],
       queryFn: ({ pageParam }) =>
-        userService.userList({ ...params, page: pageParam }),
+        productService.getAll({ ...params, page: pageParam }),
       initialPageParam: 1,
       getNextPageParam: (lastPage) =>
         lastPage.links.next ? lastPage.meta.current_page + 1 : null,
     });
 
-  const userList = extractDataFromPagination(data?.pages);
+  const productList = extractDataFromPagination(data?.pages);
 
   if (isLoading) {
     return (
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
         {Array.from(Array(10).keys()).map((product) => (
-          <UserCard.Loading key={product} />
+          <ProductCard.Loading key={product} />
         ))}
       </div>
     );
   }
-  if (userList && userList.length === 0) {
-    return <div>User not found</div>;
+  if (productList && productList.length === 0) {
+    return <div>Product not found</div>;
   }
 
   return (
@@ -48,9 +47,9 @@ export default function ProductList() {
       hasMore={hasNextPage}
       loading={isFetchingNextPage}
     >
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
-        {userList?.map((user) => (
-          <UserCard user={user} />
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4  gap-3">
+        {productList?.map((product) => (
+          <ProductCard product={product} />
         ))}
       </div>
     </InfiniteLoader>
