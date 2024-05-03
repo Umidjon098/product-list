@@ -30,13 +30,12 @@ export default function ProductList() {
 
   const productList = extractDataFromPagination(data?.pages);
 
-  if (productList && productList.length === 0) {
-    return <div>Product not found</div>;
-  }
-
   return (
     <>
       <SearchForm />
+      {productList && productList.length === 0 && (
+        <div className="text-purple-600 text-center">Product not found</div>
+      )}
       {isLoading ? (
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
           {Array.from(Array(10).keys()).map((product) => (

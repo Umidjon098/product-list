@@ -1,19 +1,23 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+import { useDebounce } from "@/hook/use-debounce";
 import { useQueryParams } from "@/hook/use-query-params";
 import { useSearchParams } from "next/navigation";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 const SearchForm = () => {
   const searchParams = useSearchParams();
   const { setQueryParams } = useQueryParams();
   const [search, setSearch] = useState(searchParams.get("search") as string);
 
+  const debouncedSearchValue = useDebounce(search);
+
   const handleChangeSortType = (value: string) => {
     setQueryParams({ sort: value }, false);
   };
 
-  const handleSearch = () => {
-    setQueryParams({ search }, false);
-  };
+  useEffect(() => {
+    setQueryParams({ search: debouncedSearchValue }, false);
+  }, [debouncedSearchValue]);
 
   return (
     <div className="mx-auto mb-6">
@@ -50,12 +54,8 @@ const SearchForm = () => {
             placeholder="enter product name..."
             required
             onChange={(e) => setSearch(e.target.value)}
-            onBlur={handleSearch}
             value={search}
           />
-          <button className="text-white absolute end-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-            Search
-          </button>
         </div>
       </div>
     </div>
