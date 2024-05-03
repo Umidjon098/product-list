@@ -17,13 +17,12 @@ export default function ProductList() {
 
   const { data, isLoading, isFetchingNextPage, fetchNextPage, hasNextPage } =
     useInfiniteQuery({
-      queryKey: ["products", params],
+      queryKey: ["users", params],
       queryFn: ({ pageParam }) =>
         userService.userList({ ...params, page: pageParam }),
-      initialPageParam: 2,
-      getNextPageParam: (lastPage) => {
-        return lastPage.nextPageUrl;
-      },
+      initialPageParam: 1,
+      getNextPageParam: (lastPage) =>
+        lastPage.links.next ? lastPage.meta.current_page + 1 : null,
     });
 
   const userList = extractDataFromPagination(data?.pages);
