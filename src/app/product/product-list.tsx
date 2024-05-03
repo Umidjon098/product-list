@@ -7,12 +7,14 @@ import { extractDataFromPagination } from "@/utils/extract-data";
 import { useInfiniteQuery } from "@tanstack/react-query";
 import { useSearchParams } from "next/navigation";
 import ProductCard from "./card";
+import SearchForm from "../components/search-form";
 
 export default function ProductList() {
   const searchParams = useSearchParams();
 
   const params = {
     sort: searchParams.get("sort") || "asc",
+    search: searchParams.get("search") || "",
     perPage: 10,
   };
 
@@ -28,30 +30,32 @@ export default function ProductList() {
 
   const productList = extractDataFromPagination(data?.pages);
 
-  if (isLoading) {
-    return (
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
-        {Array.from(Array(10).keys()).map((product) => (
-          <ProductCard.Loading key={product} />
-        ))}
-      </div>
-    );
-  }
   if (productList && productList.length === 0) {
     return <div>Product not found</div>;
   }
 
   return (
-    <InfiniteLoader
-      loadMore={fetchNextPage}
-      hasMore={hasNextPage}
-      loading={isFetchingNextPage}
-    >
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4  gap-3">
-        {productList?.map((product) => (
-          <ProductCard product={product} />
-        ))}
-      </div>
-    </InfiniteLoader>
+    <>
+      <SearchForm />
+      {isLoading ? (
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
+          {Array.from(Array(10).keys()).map((product) => (
+            <ProductCard.Loading key={product} />
+          ))}
+        </div>
+      ) : (
+        <InfiniteLoader
+          loadMore={fetchNextPage}
+          hasMore={hasNextPage}
+          loading={isFetchingNextPage}
+        >
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4  gap-3">
+            {productList?.map((product) => (
+              <ProductCard product={product} />
+            ))}
+          </div>
+        </InfiniteLoader>
+      )}
+    </>
   );
 }
