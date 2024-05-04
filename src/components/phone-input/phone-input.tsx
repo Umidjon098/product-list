@@ -21,7 +21,7 @@ export const PhoneInput = ({
       <ReactPhoneInput
         {...otherProps}
         inputProps={{ id }}
-        dropdownClass="!rounded-2xl dark:!bg-dark"
+        dropdownClass="!rounded-2xl"
         buttonClass="!rouned-2xl !bg-transparent !border-none hover:!bg-transparent"
         inputClass={clsx(
           "block px-4 w-full !text-sm bg-transparent !rounded-2xl border appearance-none focus:outline-none focus:ring-0  peer !w-full",

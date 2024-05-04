@@ -9,7 +9,7 @@ interface ProductCardProps {
 }
 
 const ProductCard = ({ product }: ProductCardProps) => (
-  <div className="bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+  <div className="bg-white border border-gray-200 rounded-lg shadow ">
     <Image
       className="rounded-t-lg w-full h-[250px] object-contain"
       src={product.img}
@@ -18,10 +18,10 @@ const ProductCard = ({ product }: ProductCardProps) => (
       height={200}
     />
     <div className="p-5">
-      <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+      <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900">
         {product.translation.title}
       </h5>
-      <p className="mb-3 font-normal text-gray-700 dark:text-gray-400 line-clamp-4">
+      <p className="mb-3 font-normal text-gray-700 line-clamp-4">
         {product.translation.description}
       </p>
     </div>
@@ -33,11 +33,11 @@ export default ProductCard;
 const ProductCardLoading = () => (
   <div
     role="status"
-    className="max-w-sm p-4 border border-gray-200 rounded shadow animate-pulse md:p-6 dark:border-gray-700 bg-white"
+    className="max-w-sm p-4 border border-gray-200 rounded shadow animate-pulse md:p-6  bg-white"
   >
-    <div className="flex items-center justify-center h-[250px] mb-4 bg-gray-300 rounded dark:bg-gray-700">
+    <div className="flex items-center justify-center h-[250px] mb-4 bg-gray-300 rounded ">
       <svg
-        className="w-10 h-10 text-gray-200 dark:text-gray-600"
+        className="w-10 h-10 text-gray-200"
         aria-hidden="true"
         xmlns="http://www.w3.org/2000/svg"
         fill="currentColor"
@@ -47,12 +47,12 @@ const ProductCardLoading = () => (
         <path d="M5 5V.13a2.96 2.96 0 0 0-1.293.749L.879 3.707A2.98 2.98 0 0 0 .13 5H5Z" />
       </svg>
     </div>
-    <div className="h-3.5 bg-gray-200 rounded-full dark:bg-gray-700 w-48 mb-4"></div>
-    <div className="h-3.5 bg-gray-200 rounded-full dark:bg-gray-700 w-48 mb-4"></div>
-    <div className="h-3 bg-gray-200 rounded-full dark:bg-gray-700 mb-2.5"></div>
-    <div className="h-3 bg-gray-200 rounded-full dark:bg-gray-700 mb-2.5"></div>
-    <div className="h-3 bg-gray-200 rounded-full dark:bg-gray-700 mb-2.5"></div>
-    <div className="h-3 bg-gray-200 rounded-full dark:bg-gray-700 mb-2.5"></div>
+    <div className="h-3.5 bg-gray-200 rounded-full w-48 mb-4"></div>
+    <div className="h-3.5 bg-gray-200 rounded-full w-48 mb-4"></div>
+    <div className="h-3 bg-gray-200 rounded-full mb-2.5"></div>
+    <div className="h-3 bg-gray-200 rounded-full mb-2.5"></div>
+    <div className="h-3 bg-gray-200 rounded-full mb-2.5"></div>
+    <div className="h-3 bg-gray-200 rounded-full mb-2.5"></div>
     <span className="sr-only">Loading...</span>
   </div>
 );

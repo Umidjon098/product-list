@@ -103,7 +103,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
           <label
             htmlFor={id}
             className={clsx(
-              "absolute text-sm text-gray-placeholder duration-300 transform -translate-y-3 scale-75 top-3.5 origin-[0] peer-focus:text-black dark:peer-focus:text-white peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-3.5",
+              "absolute text-sm text-gray-placeholder duration-300 transform -translate-y-3 scale-75 top-3.5 origin-[0] peer-focus:text-black peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-3.5",
               leftIcon
                 ? "left-10 rtl:right-10 rtl:left-auto"
                 : "left-4 rtl:right-0 rtl:left-auto",

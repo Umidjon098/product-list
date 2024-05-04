@@ -21,7 +21,7 @@ export const Radio = ({ id, label, ...otherProps }: RadioProps) => (
       height="24"
       viewBox="0 0 24 24"
       fill="none"
-      className="h-6 w-6 absolute pointer-events-none stroke-white fill-white dark:fill-gray-bold peer-checked:!hidden "
+      className="h-6 w-6 absolute pointer-events-none stroke-white fill-white peer-checked:!hidden "
     >
       <g clipPath="url(#clip0_367_4772)">
         <circle cx="12" cy="12" r="8" stroke="#080210" strokeWidth="2" />
@@ -38,7 +38,7 @@ export const Radio = ({ id, label, ...otherProps }: RadioProps) => (
       height="24"
       viewBox="0 0 24 24"
       fill="none"
-      className="h-6 w-6 absolute pointer-events-none stroke-white fill-none peer-checked:!fill-red-500 !hidden peer-checked:!block dark:peer-checked:!fill-white"
+      className="h-6 w-6 absolute pointer-events-none stroke-white fill-none peer-checked:!fill-red-500 !hidden peer-checked:!block"
     >
       <g clipPath="url(#clip0_367_4768)">
         <circle
