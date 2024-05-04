@@ -3,7 +3,6 @@
 import { Dialog, Transition } from "@headlessui/react";
 import React, { Fragment } from "react";
 import clsx from "clsx";
-import CrossOutlinedIcon from "@/assets/icons/cross-outlined";
 
 const sizes = {
   xsmall: "sm:max-w-sm",
@@ -28,10 +27,8 @@ interface ModalProps extends React.PropsWithChildren {
 export const Modal = ({
   isOpen,
   onClose,
-  withCloseButton,
   children,
   size = "medium",
-  fixedButton,
   disableCloseOnOverlayClick = false,
   mobileFullHeight,
   transparent,
@@ -71,8 +68,8 @@ export const Modal = ({
           >
             <Dialog.Panel
               className={clsx(
-                "w-full transform   sm:rounded-button  bg-white" +
-                  "backdrop-blur-lg text-left rtl:text-right transition-all p-6 rounded-lg",
+                "w-full transform sm:rounded-button" +
+                  "text-left rtl:text-right transition-all p-6 rounded-lg bg-white",
                 sizes[size],
                 mobileFullHeight
                   ? "h-screen md:h-auto"
@@ -81,24 +78,6 @@ export const Modal = ({
                 overflowHidden && "overflow-x-hidden overflow-y-auto"
               )}
             >
-              {withCloseButton && (
-                <div
-                  className={clsx(
-                    "sm:top-4 sm:right-5 rtl:left-5 max-w-max rtl:right-auto z-10",
-                    fixedButton
-                      ? "sm:absolute fixed right-2 top-2 rtl:left-2 rtl:right-auto"
-                      : "absolute top-4 right-4 rtl:left-4 rtl:right-auto"
-                  )}
-                >
-                  <button
-                    onClick={onClose}
-                    type="button"
-                    className="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2"
-                  >
-                    <CrossOutlinedIcon />
-                  </button>
-                </div>
-              )}
               {children}
             </Dialog.Panel>
           </Transition.Child>
