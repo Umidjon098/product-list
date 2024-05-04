@@ -63,7 +63,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
             disabled={disabled}
             {...props}
             className={clsx(
-              "block px-4 w-full text-sm  bg-transparent rounded-button border appearance-none focus:outline-none focus:ring-0  peer ",
+              "block px-4 w-full text-sm bg-transparent rounded-button border appearance-none focus:outline-none focus:ring-0 peer text-black",
               fullWidth && "w-full",
               !!rightIcon && "pr-8",
               !!leftIcon && "pl-10",
