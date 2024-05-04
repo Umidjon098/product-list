@@ -26,7 +26,7 @@ const SearchForm = () => {
 
   return (
     <div className="mx-auto mb-6">
-      <div className="flex xs:gap-2 lg:gap-4">
+      <div className="flex gap-2">
         <select
           value={searchParams.get("sort") as string}
           onChange={(e) => setFilter(e.target.value)}
