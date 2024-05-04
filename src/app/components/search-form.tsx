@@ -1,3 +1,5 @@
+"use client";
+
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useDebounce } from "@/hook/use-debounce";
 import { useQueryParams } from "@/hook/use-query-params";
@@ -8,7 +10,9 @@ const SearchForm = () => {
   const searchParams = useSearchParams();
   const { setQueryParams } = useQueryParams();
   const [search, setSearch] = useState(searchParams.get("search") as string);
-  const [filter, setFilter] = useState(searchParams.get("search") as string);
+  const [filter, setFilter] = useState(
+    searchParams.get("search") || ("" as string)
+  );
 
   const debouncedSearchValue = useDebounce(search) || "";
 
@@ -22,11 +26,11 @@ const SearchForm = () => {
 
   return (
     <div className="mx-auto mb-6">
-      <div className="flex gap-4">
+      <div className="flex xs:gap-2 lg:gap-4">
         <select
           value={searchParams.get("sort") as string}
           onChange={(e) => setFilter(e.target.value)}
-          className="w-[250px] bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          className="lg:w-[250px] xs:w-[150px] bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
         >
           <option value="asc">Low</option>
           <option value="desc">High</option>

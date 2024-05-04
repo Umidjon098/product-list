@@ -31,4 +31,5 @@ export interface IProduct {
   translation: ProductTranslation;
   interval?: number;
   o_count?: number;
+  "title[en]"?: string;
 }
