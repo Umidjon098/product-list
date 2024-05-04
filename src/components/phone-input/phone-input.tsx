@@ -24,7 +24,7 @@ export const PhoneInput = ({
         dropdownClass="!rounded-2xl"
         buttonClass="!rouned-2xl !bg-transparent !border-none hover:!bg-transparent"
         inputClass={clsx(
-          "block px-4 w-full !text-sm bg-transparent !rounded-2xl border appearance-none focus:outline-none focus:ring-0  peer !w-full",
+          "block px-4 w-full text-black !text-sm bg-transparent !rounded-2xl border appearance-none focus:outline-none focus:ring-0  peer !w-full",
           "!py-[29px]",
           status === "default" &&
             "!border-gray-inputBorder focus-visible:border-primary",

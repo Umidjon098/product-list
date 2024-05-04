@@ -17,7 +17,7 @@ export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
         <label htmlFor={id} className="relative inline-flex gap-3">
           <div className="absolute top-5 left-3">{icon}</div>
           <textarea
-            className="form-textarea block bg-gray-faq w-full  focus:border-primary px-4 rounded-button border py-3 outline-none  placeholder:text-text text-sm resize-none"
+            className="form-textarea text-black block bg-gray-faq w-full  focus:border-primary px-4 rounded-button border py-3 outline-none  placeholder:text-text text-sm resize-none"
             ref={ref}
             id={id}
             placeholder={`${placeholder || ""}${required ? "*" : ""}`}
